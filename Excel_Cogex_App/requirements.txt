@@ -1,5 +1,5 @@
 pandas
 streamlit
 openai
-langchain
+langchain[all]
 python-dotenv
