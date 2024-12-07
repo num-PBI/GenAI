@@ -4,6 +4,6 @@ Pillow
 lida
 openai
 llmx[transformers]
-dotenv
+python-dotenv
 
 
