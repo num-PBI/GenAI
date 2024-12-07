@@ -57,7 +57,7 @@ if df is not None and selected_method:
     # Initialize LIDA Manager with Hugging Face model
     text_gen = llm(
         provider="hf",
-        model="uukuguy/speechless-llama2-hermes-orca-platypus-13b",
+        model="meta-llama/Llama-3.2-3B-Instruct",
         api_key=hf_api_key,
         device_map="auto"
     )
@@ -66,7 +66,7 @@ if df is not None and selected_method:
     textgen_config = TextGenerationConfig(
         n=1,
         temperature=0,
-        model="gpt-3.5-turbo-16k",
+        model="meta-llama/Llama-3.2-3B-Instruct",
         use_cache=use_cache
     )
 
