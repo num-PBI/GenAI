@@ -22,10 +22,10 @@ st.write("# CSV-Plotter📊")
 st.sidebar.write("## Setup")
 
 # Step 1 - Get OpenAI API key
-openai_key = os.getenv("OPENAI_API_KEY")
+#openai_key = os.getenv("OPENAI_API_KEY")
 
-if not openai_key:
-    openai_key = st.sidebar.text_input("Enter OpenAI API key:")
+#if not openai_key:
+    #openai_key = st.sidebar.text_input("Enter OpenAI API key:")
 
 st.markdown(
     """
@@ -35,18 +35,17 @@ st.markdown(
 """)
 
 # Step 2 - Select a dataset and summarization method
-if openai_key:
     # Initialize selected_dataset to None
-    selected_dataset = None
+selected_dataset = None
 
-    use_cache = st.sidebar.checkbox("Use cache", value=True)
+use_cache = st.sidebar.checkbox("Use cache", value=True)
 
     # Handle dataset selection and upload
-    st.sidebar.write("## Data Summarization")
-    st.sidebar.markdown("Please upload your excel file (the file should have extension .csv).")
-    file = st.sidebar.file_uploader("select your file",type=["csv"])
+st.sidebar.write("## Data Summarization")
+st.sidebar.markdown("Please upload your excel file (the file should have extension .csv).")
+file = st.sidebar.file_uploader("select your file",type=["csv"])
 
-    if file is not None:
+if file is not None:
         df=pd.read_csv(file)
 
         st.sidebar.write("### Choose a summarization method")
@@ -67,7 +66,11 @@ if openai_key:
         )
 # Step 3 - Generate data summary
 if df is not None and selected_method is not None:
-    lida = Manager(text_gen=llm("openai", api_key=openai_key))
+    #lida = Manager(text_gen=llm("openai", api_key=openai_key))
+    text_gen = llm(provider="hf", model="meta-llama/Llama-3.1-8B-Instruct", device_map="auto")
+    lida = Manager(text_gen=text_gen)
+    
+
     textgen_config = TextGenerationConfig(
         n=1,
         temperature=0,
