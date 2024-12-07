@@ -6,7 +6,8 @@ import pandas as pd
 from PIL import Image
 import io
 import base64
-
+from dotenv import load_dotenv
+load_dotenv()
 df = None
 os.makedirs("data", exist_ok=True)
 
