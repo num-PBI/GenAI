@@ -24,7 +24,7 @@ st.sidebar.markdown(
 )
 
 # Get Hugging Face API key
-hf_api_key = os.getenv("HUGGINGFACE_API_KEY")
+hf_token= os.getenv("HF_TOKEN")
 
 if not hf_api_key:
     hf_api_key = st.sidebar.text_input("Enter Hugging Face API key:", type="password")
@@ -58,7 +58,7 @@ if df is not None and selected_method:
     text_gen = llm(
         provider="hf",
         model="meta-llama/Llama-3.2-3B-Instruct",
-        api_key=hf_api_key,
+        token=hf_token,
         device_map="auto"
     )
     lida = Manager(text_gen=text_gen)
