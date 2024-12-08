@@ -21,12 +21,11 @@ st.sidebar.write("## Setup")
 # Get Hugging Face API key
 hf_token= os.getenv("HF_TOKEN")
 
-if not hf_api_key:
-    hf_api_key = st.sidebar.text_input("Enter Hugging Face API key:", type="password")
+if not hf_token:
+    hf_token = st.sidebar.text_input("Enter Hugging Face access token:", type="password")
 
-if not hf_api_key:
+if not hf_token:
     st.error("Please provide your Hugging Face API key to proceed.")
-    st.stop()
 
 st.markdown(
     """
