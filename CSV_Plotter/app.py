@@ -17,11 +17,6 @@ st.write("# CSV-Plotter📊")
 st.sidebar.write("## Setup")
 
 # Instructions for Hugging Face API key
-st.sidebar.markdown(
-    "### Hugging Face Authentication\n"
-    "Ensure you have a Hugging Face API key. "
-    "Set it as an environment variable or input it below:"
-)
 
 # Get Hugging Face API key
 hf_token= os.getenv("HF_TOKEN")
