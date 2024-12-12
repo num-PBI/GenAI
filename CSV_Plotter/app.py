@@ -19,13 +19,13 @@ st.sidebar.write("## Setup")
 # Instructions for Hugging Face API key
 
 # Get Hugging Face API key
-hf_token= os.getenv("HF_TOKEN")
+openai_key = os.getenv("OPENAI_API_KEY")
 
-if not hf_token:
-    hf_token = st.sidebar.text_input("Enter Hugging Face access token:", type="password")
+if not openai_key:
+    openai_key = st.sidebar.text_input("Provide OPEN AI KEY", type="password")
 
-if not hf_token:
-    st.error("Please provide your Hugging Face API key to proceed.")
+if not openai_key:
+    st.error("Please provide your OPEN AI KEY key to proceed.")
 
 st.markdown(
     """
@@ -49,18 +49,12 @@ if file is not None:
 # Generate data summary
 if df is not None and selected_method:
     # Initialize LIDA Manager with Hugging Face model
-    text_gen = llm(
-        provider="hf",
-        model="meta-llama/Llama-3.2-1B-Instruct",
-        token=hf_token,
-        device_map="auto"
-    )
-    lida = Manager(text_gen=text_gen)
+    lida = Manager(text_gen=llm("openai", api_key=openai_key))
 
     textgen_config = TextGenerationConfig(
         n=1,
         temperature=0,
-        model="meta-llama/Llama-3.2-1B-Instruct",
+        model="gpt-3.5-turbo-16k",
         use_cache=use_cache
     )
 
