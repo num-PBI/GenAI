@@ -1,3 +1,5 @@
+import os
+os.environ["CREWAI_VECTORSTORE"] = "memory"
 import streamlit as st
 from crewai import Agent, Task, Crew, LLM
 from crewai_tools import SerperDevTool
