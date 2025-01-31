@@ -52,8 +52,7 @@ def main():
                 goal=f"To Search Web for relevant content for information relevant to {text} and the format the data into presentation slides.",
                 backstory="You are experienced web search expert who searches web and gathers data of input given and you present it to your clients.",
                 tools=[search_tool],
-                llm=llm,
-                verbose=True
+                llm=llm
             )
  
             presentation_task_obj = Task(
@@ -64,8 +63,7 @@ def main():
  
             crew = Crew(
                 agents=[presentation_agent],
-                tasks=[presentation_task_obj],
-                verbose=True
+                tasks=[presentation_task_obj]
             )
            
             result = crew.kickoff(inputs={"text": text})
