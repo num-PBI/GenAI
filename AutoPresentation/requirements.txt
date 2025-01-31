@@ -3,4 +3,3 @@ crewai
 crewai-tools
 python-pptx
 pillow
-serperdev
